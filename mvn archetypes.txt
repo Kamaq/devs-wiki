@@ -1,3 +1,48 @@
-
 -- proyecto maven standar para java
 mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=5-SNAPSHOT
+
+-- vaadin maven project
+> mvn archetype:generate \
+   -DarchetypeGroupId=com.vaadin \
+   -DarchetypeArtifactId=vaadin-archetype-application \
+   -DarchetypeVersion=7.3.10 \
+   -Dpackaging=war
+
+
+-- axis2 project
+> mvn archetype:generate \
+   -DarchetypeGroupId=org.apache.axis2.archetype \
+   -DarchetypeArtifactId=quickstart-webapp \
+   -DarchetypeVersion=1.7.0-SNAPSHOT \
+   -Dpackaging=war \
+   -DarchetypeRepository=https://repository.apache.org/content/groups/snapshots
+
+  -- agregar al pom.xml el repositorio para que tambien se resuelvan las dependencias
+         <repositories>  
+           <repository>     
+            <id>snapshots</id>  
+            <url>http://repository.apache.org/snapshots</url>  
+           </repository>    
+         </repositories>  
+
+-- otro repo
+http://axis2m.sourceforge.net/repo/
+
+-- generar codigo java cliente
+>mvn axis2m:wsdl2java
+
+
+<archetype>
+<groupId>org.apache.axis2.archetype</groupId>
+<artifactId>quickstart</artifactId><version>1.7.0-SNAPSHOT</version>
+<repository>https://repository.apache.org/content/groups/snapshots</repository>
+<description>Maven archetype for creating a  Axis2 web Service</description>
+</archetype>
+
+<archetype>
+<groupId>org.apache.axis2.archetype</groupId>
+<artifactId>quickstart-webapp</artifactId>
+<version>1.7.0-SNAPSHOT</version>
+<repository>https://repository.apache.org/content/groups/snapshots
+</repository><description>Maven archetype for creating a  Axis2 web Service as a webapp</description>
+</archetype>
