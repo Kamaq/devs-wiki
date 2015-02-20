@@ -1,20 +1,23 @@
--- Iniciar un repositorio git desnudo (bare)
+﻿Iniciar un repositorio git desnudo (bare)
+=============================================
+
 
 -- ++++++ En el servidor git +++++
+==================================
 
 1.  Crear carpeta .git para el proyecto deseado:
-
 mkdir aje-cfdi-ws.git
 
 
 2. Dentro de cada directorio, inicializar un repositorio bare git:
-
 git --bare init
 
+
+
 -- ++++++ En el equipo cliente +++++
+==================================
 
 1. Copiar carpeta de proyecto en ubicacion local. Asegurarse que tengan los mismo nombres de las carpetas creadas en el servidor (sin la extension .git)
-
 mkdir aje-cfdi-ws
 
 2. Dentro de cada carpeta, iniciar repositorio local git y añadir repositorio remoto:
