@@ -1,0 +1,89 @@
+-- Iniciar un repositorio git desnudo (bare)
+
+-- ++++++ En el servidor git +++++
+
+1.  Crear carpeta .git para el proyecto deseado:
+
+mkdir aje-cfdi-ws.git
+
+
+2. Dentro de cada directorio, inicializar un repositorio bare git:
+
+git --bare init
+
+-- ++++++ En el equipo cliente +++++
+
+1. Copiar carpeta de proyecto en ubicacion local. Asegurarse que tengan los mismo nombres de las carpetas creadas en el servidor (sin la extension .git)
+
+mkdir aje-cfdi-ws
+
+2. Dentro de cada carpeta, iniciar repositorio local git y añadir repositorio remoto:
+
+-- crear excepciones a enviar como modificados; crear archivo .gitignore con el siguiente contenido : build/
+nano .gitignore
+
+git init
+git remote add origin git@172.20.0.63:/opt/git/aje-projects/aje-commerce/aje-cfdi-ws.git
+
+git add .
+git commit -m 'iniciando proyecto'
+git push origin master
+
+
+-- en caso de hacer el .gitignore despues de haber confirmado
+git rm -r --cached .
+git add .
+git push origin master
+
+
+
+++++++++++++ desde eclipse con eGit plugin ++++++++++++++++++
+
+Ir a Window/Show View/Other y seleccionar carpeta Git/Repositories
+
+1. Crear repositorio local nuevo
+   Dentro de la vista, seleccionar el icono "Create a new Git repository and add it to this view"
+   Crear carpeta donde se alojara el repositorio (debe coincidir con el nombre del proyecto.git)
+   Dejar la opcion Bare SIN seleccionar.
+
+ 2. Registrar repositorio remoto
+   Desplegar el repositorio creado, seleccionar clic derecho en rama "Remotes" e indicar "crear Remote"  
+   Dejar en nomnbre "origin" por defecto y dejar en opcion "Push"
+   En opcion URI seleccionar <Change> y agregar los campos como sigue:
+
+   URI : git@172.20.0.63:/opt/git/ajeprojects/aje-commerce/aje-cfdi-ws-client.git
+   En base a este campo se llenan en automatico los siguientes:
+   Host : 172.20.0.63
+   Repository path : /opt/git/ajeprojects/aje-commerce/aje-cfdi-ws-client.git
+   Dejar Protocol y Port en blanco
+   User : git
+   Password : *********
+   clic <finish>
+   clic <save>
+
+   3. Actualizar repositorio local a partir del repositorio remoto
+
+   Seleccionar repositorio y dar clic derecho en "Remote fetch"
+   Confirmar password de usuario git
+   Seleccionar Source Ref: HEAD
+   Add all branches spec
+   Dejar en Automatically follow tags if we the thing they point at
+   <ok>
+
+   Seleccionar "Remote tracking" y clic derecho en origin/master
+   Seleccionar "checkout"
+   indicar <checkout as new local branch>
+   dejar todo por defecto, indicar <finish/opt/git/ajeprojects/aje-commerce/aje-cfdi-ws-client.git>
+
+   4 . Importar proyecto traido del repositorio remoto
+
+   Seleccionar repositorio y dar clic derecho en "Import projects"
+   dejar todo por defecto
+   <next>
+   <finish>
+   
+
+
+
+
+
